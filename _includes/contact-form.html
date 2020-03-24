@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+  <div class="col col-lg-8">
+    <form class="needs-validation mb-4" method="POST" action="https://formspree.io/{{ site.email }}" novalidate>
+      <input type="hidden" name="_next" value="{{ site.url }}{{ site.baseurl }}/thanks/">
+      <input type="hidden" name="_subject" value="New submission via {{ site.url}}{{ site.baseurl }}/contact/">
+      <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="phone" class="form-control" id="phone" name="phone" placeholder="0400 000 000" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+      </div>
+      <fieldset class="form-group">
+        <legend class="col-form-label">I'd like to...</legend>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="more" name="customRadio" class="custom-control-input" required>
+          <label class="custom-control-label" for="more">Find out more about what you guys are doing</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="contribute" name="customRadio" class="custom-control-input" required>
+          <label class="custom-control-label" for="contribute">Contribute a film to the project</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="media" name="customRadio" class="custom-control-input" required>
+          <label class="custom-control-label" for="media">Feature what you're doing in the media</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="other" name="customRadio" class="custom-control-input" required>
+          <label class="custom-control-label" for="other">Other</label>
+        </div>
+      </fieldset>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+      </div>
+      <button class="btn btn-success" type="submit">Send</button>
+    </form>    
+  </div>
+</div>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+          form.classList.add("was-validated");
+        } else {
+          var options = {
+            year: 'numeric', month: 'numeric', day: 'numeric',
+            hour: 'numeric', minute: 'numeric', second: 'numeric',
+            hour12: false,
+            timeZone: 'Australia/Sydney',
+            timeZoneName: 'short'
+          };
+          form[1].value += ' from ' + form[2].value + ' on ' + Intl.DateTimeFormat('en-AU', options).format(Date.now());
+          // event.preventDefault();
+          // event.stopPropagation();
+        }
+      }, false);
+    }, false);
+  }, false);
+})();
+</script>

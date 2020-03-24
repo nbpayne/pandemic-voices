@@ -1,0 +1,9 @@
+<h2 id="{{ include.name | slugify }}">{{ include.name }} <small class="text-muted">{{ include.role }}</small></h2>
+<div class="row mb-3">
+  <div class="col-lg-4 pr-lg-0">
+    <img class="img-fluid rounded mb-2" src="/img/headshots/{{ include.name | slugify }}.jpg">
+  </div>
+  <div class="col-lg-8">
+    <p>{{ include.content }}</p>    
+  </div>
+</div>
